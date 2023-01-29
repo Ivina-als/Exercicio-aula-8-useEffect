@@ -31,6 +31,7 @@ const Home = () => {
 
   useEffect(() => {
     setCounterDouble((prev) => counter * 2);
+    //não desmontei o item pq o counter já inicia com zero na montagem do componente
   }, [counter]);
 
   return (
