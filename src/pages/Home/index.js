@@ -6,38 +6,12 @@ import assets from "../../assets/tecnologia-lluni-2.svg";
 import Img from "../../components/Img/index";
 import Count from "../../components/Count";
 import { useEffect, useState } from "react";
-
-/*
-1. Faça com que o nosso componente da página Home inicialize um item no localstorage:
-https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage
-
-2. Exiba esse item dentro da nossa div principal.
-
-3. Faça alterações no useEffect usando o useState do contador através do observador do useEffetct:
-
-  useEffect(() => {
-
-  }, [contador]);
-
-
-  const [contador, setContador] = useState(0);
-
- 4. Exiba o valor do contador e altere ao clicar no button:
-<h1>Contador: {contador}</h1>
-        <button onClick={() => setContador(contador + 1)}>+</button>
-
-5. Ao desmontar o nosso componente, apague o item criado no localstorage>
-
-
-useEffect(() => {
-    return () => console.log("Aqui é quando o componente será desmontado!");
-  }, []); 
-*/
+import SubTitle from "../../components/Subtitle";
 
 const Home = () => {
   const [counter, setCounter] = useState(0);
   const [counterDouble, setCounterDouble] = useState(counter);
-  const [storageEmail, setStorageEmail] = useState("");
+  const [storageAccount, setStorageAccount] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -48,10 +22,10 @@ const Home = () => {
     return navigate("/");
   };
   useEffect(() => {
-    localStorage.setItem("email", "raniel@gmail.com");
-    setStorageEmail((prev) => localStorage.getItem("email"));
+    localStorage.setItem("Account", "Raniel");
+    setStorageAccount((prev) => localStorage.getItem("Account"));
     return function () {
-      localStorage.removeItem("email");
+      localStorage.removeItem("Account");
     };
   }, []);
 
@@ -71,16 +45,11 @@ const Home = () => {
                 {u.email}
               </li>
             ))}
-            <li>{storageEmail}</li>
           </ul>
 
-          <p>Que nota esse exercício merece?</p>
+          <p>Que nota esse exercício merece (entre 0 e 10)?</p>
           <div>
-            <Count count={counter} />
-            <Count count={counterDouble} />
-
-            <div>
-              {" "}
+            <div className="div-count">
               <button
                 onClick={() => {
                   if (counter === 0) return;
@@ -89,8 +58,22 @@ const Home = () => {
               >
                 -
               </button>
-              <button onClick={() => setCounter(counter + 1)}>+</button>
+              <Count count={counter} />
+              <button
+                onClick={() => {
+                  if (counter === 10) return;
+                  setCounter(counter + 1);
+                }}
+              >
+                +
+              </button>
             </div>
+            <SubTitle
+              text={`*O valor da nota fornecida será convertida para o dobro para ser enviado em dolares para a conta de ${storageAccount}
+              `}
+            />
+
+            <Count count={`USD ${counterDouble}`} />
           </div>
           <ButtonDefault
             redirection={clickAction}

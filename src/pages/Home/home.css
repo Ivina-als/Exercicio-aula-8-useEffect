@@ -31,3 +31,15 @@ h2 {
 ul {
   padding-right: 20px;
 }
+
+.div-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dollar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
