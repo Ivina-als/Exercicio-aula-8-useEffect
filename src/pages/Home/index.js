@@ -70,7 +70,7 @@ const Home = () => {
               </button>
             </div>
             <SubTitle
-              text={`*O valor da nota fornecida será convertida para o dobro para ser enviado em dolares para a conta de ${storageAccount}
+              text={`*O valor da nota fornecida será convertido para o dobro para ser enviado em dolares para a conta de ${storageAccount}
               `}
             />
 
