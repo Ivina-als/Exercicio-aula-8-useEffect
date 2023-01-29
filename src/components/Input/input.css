@@ -1,0 +1,21 @@
+.container-input {
+  display: flex;
+  font-size: medium;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.input-user {
+  padding-left: 5px;
+  background-color: #313640;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.795);
+  color: rgba(255, 255, 255, 0.496);
+  box-shadow: none;
+}
+.input-user:focus {
+  outline: none;
+  color: rgba(255, 255, 255, 0.795);
+  box-shadow: none;
+}
