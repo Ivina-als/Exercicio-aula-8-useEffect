@@ -37,7 +37,7 @@ useEffect(() => {
 const Home = () => {
   const [counter, setCounter] = useState(0);
   const [counterDouble, setCounterDouble] = useState(counter);
-  const [storageEmail] = useState(localStorage.getItem("email"));
+  const [storageEmail, setStorageEmail] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -49,9 +49,9 @@ const Home = () => {
   };
   useEffect(() => {
     localStorage.setItem("email", "raniel@gmail.com");
+    setStorageEmail((prev) => localStorage.getItem("email"));
     return function () {
       localStorage.removeItem("email");
-      console.log(localStorage.getItem("email"));
     };
   }, []);
 
